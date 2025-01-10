@@ -1,5 +1,4 @@
 <?php
-// submit_quiz.php
 session_start();
 require_once '_inc/autoload.php';
 
@@ -9,5 +8,5 @@ $controller = new QuizController();
 $score = $controller->checkAnswers($_POST);
 
 // Redirection vers la page des résultats avec le score
-header("Location: results.php");
+header("Location: Classes/Templates/results.php");
 exit();

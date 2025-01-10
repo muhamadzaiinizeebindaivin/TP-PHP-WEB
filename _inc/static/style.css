@@ -1,0 +1,161 @@
+/* _inc/static/style.css */
+
+/* Réinitialisation de base pour les marges et le padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    flex-direction: column; /* Ajout pour s'assurer que tout est centré */
+}
+
+/* Header du quiz */
+.header {
+    width: 100%;
+    text-align: center;  /* Centrer le texte du header */
+    margin-bottom: 20px; /* Ajouter un espacement entre le header et le quiz */
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #4CAF50;
+}
+
+/* Conteneur principal du quiz */
+.quiz-container, .result-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* Style pour chaque question */
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Champs de formulaire */
+input[type="text"], input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* Label */
+label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Bouton d'envoi */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Résultats */
+.result-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.score {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.result-container h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.result-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Bouton pour recommencer */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #555;
+}

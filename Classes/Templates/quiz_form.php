@@ -1,34 +1,41 @@
-<form method="POST" action="submit_quiz.php">
-    <?php
-    foreach ($this->questions['questions'] as $question) {
-        echo "<div>";
-        echo "<p>{$question['text']}</p>";  // 'text' au lieu de 'question'
+<!-- templates/quiz_form.php -->
+<?php include('header.php'); ?>
 
-        switch ($question['type']) {
-            case 'text':
-                echo "<input type='text' name='{$question['name']}'>";
-                break;
+<div class="quiz-container">
+    <form method="POST" action="submit_quiz.php">
+        <?php
+        foreach ($this->questions['questions'] as $question) {
+            echo "<div class='question'>";
+            echo "<p>{$question['text']}</p>";
 
-            case 'radio':
-                foreach ($question['choices'] as $choice) {  // 'choices' au lieu de 'options'
-                    echo "<label>
-                            <input type='radio' name='{$question['name']}' value='{$choice['value']}'> 
-                            {$choice['text']}
-                          </label><br>";
-                }
-                break;
+            switch ($question['type']) {
+                case 'text':
+                    echo "<input type='text' name='{$question['name']}'>";
+                    break;
 
-            case 'checkbox':
-                foreach ($question['choices'] as $choice) {  // 'choices' au lieu de 'options'
-                    echo "<label>
-                            <input type='checkbox' name='{$question['name']}[]' value='{$choice['value']}'> 
-                            {$choice['text']}
-                          </label><br>";
-                }
-                break;
+                case 'radio':
+                    foreach ($question['choices'] as $choice) {
+                        echo "<label>
+                                <input type='radio' name='{$question['name']}' value='{$choice['value']}'> 
+                                {$choice['text']}
+                              </label><br>";
+                    }
+                    break;
+
+                case 'checkbox':
+                    foreach ($question['choices'] as $choice) {
+                        echo "<label>
+                                <input type='checkbox' name='{$question['name']}[]' value='{$choice['value']}'> 
+                                {$choice['text']}
+                              </label><br>";
+                    }
+                    break;
+            }
+            echo "</div>";
         }
-        echo "</div>";
-    }
-    ?>
-    <input type="submit" value="Envoyer">
-</form>
+        ?>
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+
+<?php include('footer.php'); ?>
