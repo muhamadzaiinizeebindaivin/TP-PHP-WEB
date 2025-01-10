@@ -1,9 +1,13 @@
 <?php
+// submit_quiz.php
 session_start();
+require_once '_inc/autoload.php';
 
-// Stocker les réponses en session
-$_SESSION['quiz_answers'] = $_POST;
+use Classes\Quiz\QuizController;
 
-// Calculer un score (si nécessaire) ou afficher les réponses
-header('Location: results.php');
-exit;
+$controller = new QuizController();
+$score = $controller->checkAnswers($_POST);
+
+// Redirection vers la page des résultats avec le score
+header("Location: results.php");
+exit();
