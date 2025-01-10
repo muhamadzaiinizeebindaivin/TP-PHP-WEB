@@ -26,7 +26,7 @@
                 }
             ],
             "answer": "blanc",
-            "score": 2
+            "score": 1
         },
         {
             "name": "drapeau",
@@ -55,7 +55,7 @@
                 }
             ],
             "answer": ["bleu", "blanc", "rouge"],
-            "score": 3
+            "score": 1
         }
     ]
 }
