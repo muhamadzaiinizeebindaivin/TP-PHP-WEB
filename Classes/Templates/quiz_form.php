@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="_inc\static\style.css">
 </head>
 <body>
+    <?php include 'header.php'; ?>
     <div class="quiz-container">
         <form method="POST" action="submit_quiz.php">
             <?php
@@ -40,5 +41,6 @@
             <input type="submit" value="Envoyer mes réponses">
         </form>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

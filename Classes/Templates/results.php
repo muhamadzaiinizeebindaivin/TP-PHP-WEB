@@ -13,6 +13,8 @@ if (!isset($_SESSION['quiz_results'])) {
     <link rel="stylesheet" href="../../_inc/static/style.css">
 </head>
 <body>
+
+    <?php include('header.php'); ?>
     <div class="result-container">
         <div class="score">
             <h2>Votre score final</h2>
@@ -47,5 +49,6 @@ if (!isset($_SESSION['quiz_results'])) {
         
         <a href="../../index.php" class="restart-button">Recommencer le quiz</a>
     </div>
+    <?php include('footer.php'); ?>
 </body>
 </html>

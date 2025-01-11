@@ -10,5 +10,5 @@
 
 <!-- Header -->
 <div class="header">
-    <h1>Bienvenue dans le Quiz</h1>
+    <h1>Quiz PHP</h1>
 </div>
