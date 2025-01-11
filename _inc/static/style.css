@@ -1,10 +1,37 @@
 .header {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
-    /*padding: 25px 0;*/
+    position: relative;
+    padding: 20px 0;
     text-align: center;
     margin-bottom: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-buttons {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-right: 10px;
+    background-color: white;
+    color: #1e3c72;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+}
+
+.welcome-text {
+    color: white;
+    margin-right: 15px;
 }
 
 .header h1 {
