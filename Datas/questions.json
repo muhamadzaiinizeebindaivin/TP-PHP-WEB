@@ -3,14 +3,14 @@
         {
             "name": "ultime",
             "type": "text",
-            "text": "Quelle est la réponse ultime?",
+            "text": "Quelle est la réponse ultime ?",
             "answer": "42",
             "score": 1
         },
         {
             "name": "cheval",
             "type": "radio",
-            "text": "Quelle est la couleur du cheval blanc d'Henri IV?",
+            "text": "Quelle est la couleur du cheval blanc d'Henri IV ?",
             "choices": [
                 {
                     "text": "Bleu",
@@ -31,7 +31,7 @@
         {
             "name": "drapeau",
             "type": "checkbox",
-            "text": "Quelles sont les couleurs du drapeau français?",
+            "text": "Quelles sont les couleurs du drapeau français ?",
             "choices": [
                 {
                     "text": "Bleu",
