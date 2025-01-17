@@ -29,6 +29,28 @@
     background-color: #f0f0f0;
 }
 
+.import-button{
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 10px;
+    background-color: white;
+    color:#0f8df5;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}   
+
+.export-button{
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 10px;
+    background-color: white;
+    color: #ff3737;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 .welcome-text {
     color: white;
     margin-right: 15px;
@@ -175,3 +197,4 @@ body {
 .restart-button:hover {
     background-color: #0056b3;
 }
+

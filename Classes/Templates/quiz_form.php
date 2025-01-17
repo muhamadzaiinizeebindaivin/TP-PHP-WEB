@@ -8,6 +8,8 @@
     <div class="quiz-container">
         <form method="POST" action="submit_quiz.php">
             <?php
+            echo '<a href="" class="import-button">Import</a>';
+            echo '<a href="" class="export-button">Export</a>';
             foreach ($this->questions['questions'] as $question) {
                 echo "<div class='question'>";
                 echo "<p>{$question['text']}</p>";
