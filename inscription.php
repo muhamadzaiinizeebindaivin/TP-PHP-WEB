@@ -1,41 +1,39 @@
 <?php
-$host = "servinfo-maria";
-$dbname = "DBbindaivin";
-$username = "bindaivin";
-$password = "bindaivin";
+$database = __DIR__ . "/database.sqlite";
 
-// Créer une connexion à la base de données
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("sqlite:" . $database);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("CREATE TABLE IF NOT EXISTS  utilisateurs (
+        prenom TEXT NOT NULL,
+        nom TEXT NOT NULL,
+        PRIMARY KEY (prenom, nom)
+    )");
+    
 } catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+    die("Erreur : " . $e->getMessage());
 }
 
-// Vérification si le formulaire est soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $nom = htmlspecialchars($_POST['nom']);
+$message = ""; // Variable to hold messages
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $prenom = trim(htmlspecialchars($_POST['prenom']));
+    $nom = trim(htmlspecialchars($_POST['nom']));
+
+    // Insert new user if they don't already exist
+    $sqlInsert = "INSERT INTO utilisateurs (prenom, nom) VALUES (:prenom, :nom)";
+    $stmtInsert = $pdo->prepare($sqlInsert);
+    $stmtInsert->bindParam(':prenom', $prenom);
+    $stmtInsert->bindParam(':nom', $nom);
     
-    // Préparer la requête d'insertion
-    $sql = "INSERT INTO utilisateurs (prenom, nom) VALUES (:prenom, :nom)";
-    $stmt = $pdo->prepare($sql);
-    
-    // Lier les paramètres et exécuter la requête
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':nom', $nom);
-    
-    // Exécuter l'insertion
-    if ($stmt->execute()) {
-        echo "<h2>Inscription réussie !</h2>";
-        echo "<p>Nom : " . $nom . "</p>";
-        echo "<p>Prénom : " . $prenom . "</p>";
-    } else {
-        echo "<p>Une erreur est survenue lors de l'inscription.</p>";
+    try {
+        $stmtInsert->execute();
+        $message = "<p style='color: green;'>Inscription réussie !</p>";
+    } catch (PDOException $e) {
+        $message = "<p style='color: red;'>L'utilisateur existe déjà.</p>";
     }
-} else {
-    // Si le formulaire n'est pas encore soumis
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -46,6 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <h1>Inscription d'un utilisateur</h1>
+
+    <?php
+    // Display the message if it exists
+    if (!empty($message)) {
+        echo $message;
+    }
+    ?>
     
     <form action="" method="POST">
         <label for="prenom">Prénom :</label>
@@ -60,6 +65,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
-<?php
-}
-?>
