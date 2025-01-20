@@ -1,48 +1,63 @@
 <?php
-$host = "servinfo-maria";
-$dbname = "DBbindaivin";
-$username = "bindaivin";
-$password = "bindaivin";
+$database = __DIR__ . "/database.sqlite";
 
-// Créer une connexion à la base de données
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("sqlite:" . $database);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+    die("Erreur : " . $e->getMessage());
 }
 
-// Vérification si le formulaire est soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $nom = htmlspecialchars($_POST['nom']);
-    
-    // Requête pour vérifier si l'utilisateur existe dans la base de données
-    $sql = "SELECT * FROM utilisateurs WHERE prenom = :prenom AND nom = :nom";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':nom', $nom);
-    $stmt->execute();
-    
-    // Vérification si l'utilisateur existe
-    if ($stmt->rowCount() > 0) {
-        echo "<h2>Bienvenue, " . $prenom . " " . $nom . " !</h2>";
-    } else {
-        echo "<p>Nom ou prénom incorrect.</p>";
+$message = ""; // Variable to hold messages
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $prenom = trim(htmlspecialchars($_POST['prenom']));
+    $nom = trim(htmlspecialchars($_POST['nom']));
+
+    // Debugging: Check what values are being received from the form
+    var_dump($prenom, $nom);  // REMOVE this line in production, it prints the values
+
+    // Check if the user exists
+    $sqlCheck = "SELECT * FROM utilisateurs WHERE prenom = :prenom AND nom = :nom";
+    $stmtCheck = $pdo->prepare($sqlCheck);
+    $stmtCheck->bindParam(':prenom', $prenom);
+    $stmtCheck->bindParam(':nom', $nom);
+
+    try {
+        $stmtCheck->execute();
+        
+        // Debugging: Check how many rows were returned
+        //var_dump($stmtCheck->fetch());  // REMOVE this line in production, it shows the row count
+
+        if (count($stmtCheck->fetch()) > 0) {
+            // User found, login success
+            $message = "<p style='color: green;'>Connexion réussie !</p>";
+        } else {
+            // User not found
+            $message = "<p style='color: red;'>Utilisateur non trouvé.</p>";
+        }
+    } catch (PDOException $e) {
+        $message = "<p style='color: red;'>Une erreur est survenue lors de la connexion.</p>";
     }
-} else {
-    // Si le formulaire n'est pas encore soumis
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Connexion</title>
+    <title>Page de connexion</title>
 </head>
 <body>
     <h1>Connexion</h1>
+
+    <?php
+    // Display the message if it exists
+    if (!empty($message)) {
+        echo $message;
+    }
+    ?>
     
     <form action="" method="POST">
         <label for="prenom">Prénom :</label>
@@ -57,6 +72,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
-<?php
-}
-?>
