@@ -50,12 +50,11 @@ try {
             echo $quiz->renderAnswer($_POST);
             ?>
         </div>
-    </div>
-
-    <div>
-        <form method="GET" action="/questions">
-            <button type="submit">Refaire le quiz</button>
-        </form>
+        <div>
+            <form method="GET" action="/questions">
+                <button type="submit">Refaire le quiz</button>
+            </form>
+        </div>
     </div>
 
     <?php include 'footer.php'; ?>
