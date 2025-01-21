@@ -2,6 +2,7 @@
 // Include the necessary classes
 use Model\Quiz\Quiz;
 use Model\DataSources\JsonProvider;
+$answer2 = ["hi", "ho"];
 
 // Load the questions from the provider
 $jsonProvider = new JsonProvider();
@@ -38,10 +39,11 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page des Questions</title>
     <link rel="stylesheet" href="assets/css/answer.css">
+    <link rel="stylesheet" href="assets/css/header.css"> <!-- Link to the header CSS -->
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <h1>Votre résultat </h1>
+    <h1>Votre résultat</h1>
     <div>
     <?php
     // Render the quiz form (render the answers)
@@ -49,6 +51,14 @@ try {
     echo $quiz->renderAnswer($_POST);
     ?>
     </div>
+
+    <!-- "Do Again" Button -->
+    <div>
+        <form method="GET" action="/questions"> <!-- Replace "/quiz" with your quiz start page URL -->
+            <button type="submit">Refaire le quiz</button>
+        </form>
+    </div>
+
     <?php include 'footer.php'; ?>
 </body>
 </html>
