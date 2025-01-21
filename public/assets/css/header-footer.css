@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed; /* Fixe l'en-tête en haut de la page */
+    top: 0; /* Le positionne tout en haut de la page */
+    left: 0;
+    width: 100%; /* Occupe toute la largeur de la page */
+    z-index: 1000; /* S'assure que l'en-tête est au-dessus des autres éléments */
+}
+
+.nav-buttons {
+    margin-top: 10px;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.nav-buttons a:hover {
+    background-color: #0056b3;
+}
+
+.welcome-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* Ajouter un padding en haut du body pour éviter que le contenu se cache sous l'en-tête */
+body {
+    padding-top: 80px; /* Ajustez la valeur si nécessaire pour compenser la hauteur de l'en-tête */
+}
