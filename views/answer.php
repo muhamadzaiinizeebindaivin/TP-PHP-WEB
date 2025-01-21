@@ -40,13 +40,14 @@ try {
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <h1>Votre résultat </h1>
-    <div>
-    <?php
-    // Render the quiz form (render the answers)
-    $quiz = new Quiz('Answer', $questions);
-    echo $quiz->renderAnswer($_POST);
-    ?>
+    <div id="result-container">
+        <h1>Votre résultat </h1>
+        <div class="question-container">
+            <?php
+            $quiz = new Quiz('Answer', $questions);
+            echo $quiz->renderAnswer($_POST);
+            ?>
+        </div>
     </div>
     <?php include 'footer.php'; ?>
 </body>
