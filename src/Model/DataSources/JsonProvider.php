@@ -32,7 +32,6 @@ class JsonProvider
                 $choices[] = $choice['text']; // Or $choice['value'], depending on what you need
             }
         }
-
         switch ($type) {
             case 'text':
                 $array[] = new Text($name, $label, $choices, $answer, $score);

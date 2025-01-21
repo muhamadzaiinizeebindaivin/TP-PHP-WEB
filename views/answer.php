@@ -6,7 +6,30 @@ use Model\DataSources\JsonProvider;
 // Load the questions from the provider
 $jsonProvider = new JsonProvider();
 $questions = $jsonProvider->getListeQuestions();
+define('DB_PATH', __DIR__ . '/../data/database.sqlite');
 
+try {
+    // Connectez-vous à votre base de données SQLite
+    $pdo = new \PDO('sqlite:' . DB_PATH);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Requête SQL pour créer la table
+    $sql = "
+        CREATE TABLE IF NOT EXISTS scores (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            idutilisateur INTEGER NOT NULL,
+            nom TEXT NOT NULL,
+            prenom TEXT NOT NULL,
+            score INTEGER NOT NULL
+        );
+    ";
+
+    // Exécutez la requête
+    $pdo->exec($sql);
+    echo "Table 'scores' créée avec succès.";
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
