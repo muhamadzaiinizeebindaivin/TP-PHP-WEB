@@ -1,4 +1,3 @@
-/* Style général */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -9,7 +8,6 @@ body {
     padding-bottom: 60px;
 }
 
-/* Header */
 .header {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
@@ -49,7 +47,6 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Conteneur principal */
 #result-container {
     max-width: 800px;
     margin: 30px auto;
@@ -66,7 +63,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Question Container */
 .question-container {
     margin-bottom: 20px;
     padding: 20px;
@@ -86,7 +82,6 @@ body {
     color: #555;
 }
 
-/* Inputs : checkbox, radio */
 input[type="radio"],
 input[type="checkbox"] {
     margin-right: 10px;
@@ -95,7 +90,6 @@ input[type="checkbox"] {
     height: 18px;
 }
 
-/* Table styling */
 .question-container table {
     width: 100%;
     margin: 10px 0;
@@ -127,7 +121,6 @@ input[type="checkbox"] {
     font-size: 1.1rem;
 }
 
-/* Score Container */
 .score {
     text-align: center;
     font-size: 1.5rem;
@@ -139,7 +132,6 @@ input[type="checkbox"] {
     border-radius: 5px;
 }
 
-/* Boutons */
 input[type="submit"],
 .restart-button {
     display: inline-block;
@@ -160,7 +152,6 @@ input[type="submit"]:hover,
     background-color: #0056b3;
 }
 
-/* Footer */
 .footer {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
@@ -177,7 +168,6 @@ input[type="submit"]:hover,
     margin: 0;
 }
 
-/* Responsiveness */
 @media (max-width: 768px) {
     .header h1 {
         font-size: 2rem;

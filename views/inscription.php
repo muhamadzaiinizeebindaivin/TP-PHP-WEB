@@ -1,23 +1,17 @@
 <?php
-// Include the necessary classes
 use Forms\SignUpForm;
 
-// Database configuration
 define('DB_PATH', __DIR__ . '/../data/database.sqlite');
 
-// Function to initialize the database and table
 function initializeDatabase(): \PDO {
     if (!file_exists(dirname(DB_PATH))) {
         mkdir(dirname(DB_PATH), 0777, true);
     }
 
-    // Create or open the database
     $pdo = new \PDO('sqlite:' . DB_PATH);
 
-    // Set error mode for PDO
     $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-    // Create the users table if it doesn't exist
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,11 +25,9 @@ function initializeDatabase(): \PDO {
     return $pdo;
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo = initializeDatabase();
 
-    // Sanitize and validate user input
     $identifiant = trim($_POST['identifiant'] ?? '');
     $prenom = trim($_POST['prenom'] ?? '');
     $nom = trim($_POST['nom'] ?? '');
@@ -44,10 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($identifiant && $prenom && $nom && $password && $password === $confirmPassword) {
         try {
-            // Hash the password for security
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-            // Insert user data into the database
             $stmt = $pdo->prepare("
                 INSERT INTO users (identifiant, prenom, nom, password)
                 VALUES (:identifiant, :prenom, :nom, :password)
