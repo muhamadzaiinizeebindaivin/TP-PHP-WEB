@@ -26,7 +26,6 @@ try {
 
     // Exécutez la requête
     $pdo->exec($sql);
-    echo "Table 'scores' créée avec succès.";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
