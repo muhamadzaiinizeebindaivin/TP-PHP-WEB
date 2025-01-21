@@ -34,8 +34,8 @@ class Quiz
             $html .= "</li>";
         }
         $html .= "</ol>";
-        $html .= "<h3>Votre score final est de " . $_SESSION['score'] . "/" . array_sum(array_map(fn($q): int => $q->getScore(), $this->questions)) . "</h3>";
-        $html .= "<h3>Merci de votre participation</h3>";
+        $html .= "<h3 id='score'>Votre score final est de " . $_SESSION['score'] . "/" . array_sum(array_map(fn($q): int => $q->getScore(), $this->questions)) . "</h3>";
+        $html .= "<h3 id='appre'>Merci de votre participation !</h3>";
         return $html;
     }
 }

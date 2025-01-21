@@ -43,5 +43,12 @@ $routes = [
         ],
         'redirect' => '/'
     ],
+    '/deconnexion' => [
+        'controller' => \Controller\ControllerDeconnexion::class,
+        'methods' => [
+            'GET'
+        ],
+        'redirect' => '/'
+    ],
     
 ];

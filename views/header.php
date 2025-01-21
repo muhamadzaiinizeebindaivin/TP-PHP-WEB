@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz PHP</title>
-    <!-- Lien vers le fichier CSS -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-<body>
-    <!-- En-tête -->
-    <header class="header">
-        <h1>Bienvenue sur le Quiz PHP</h1>
-        <div class="nav-buttons">
-            <?php
-            // Vérification avant de démarrer la session
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
+<div class="nav-buttons">
+    <?php
+    // Start the session if it hasn't been started already
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-            // Gestion de la navigation utilisateur
-            if (!isset($_SESSION['user_id'])) {
-                echo '<a href="connexion" class="nav-button">Se connecter</a>';
-                echo '<a href="inscription" class="nav-button">Créer un compte</a>';
-            } else {
-                echo '<span class="welcome-text">Bienvenue, ' . htmlspecialchars($_SESSION['prenom']) . ' ' . htmlspecialchars($_SESSION['nom']) . '!</span>';
-                echo '<a href="deconnexion" class="nav-button">Se déconnecter</a>';
-            }
-            ?>
-        </div>
-    </header>
-</body>
-</html>
+    // Check if the user is logged in
+    if (!isset($_SESSION['user'])) {
+        // Show login and registration buttons if the user is not logged in
+        echo '<a href="connexion" class="nav-button">Se connecter</a>';
+        echo '<a href="inscription" class="nav-button">Créer un compte</a>';
+    } else {
+        // Show user greeting and logout button if the user is logged in
+        echo '<span class="welcome-text">Bienvenue, ' . htmlspecialchars($_SESSION['user']['prenom']) . ' ' . htmlspecialchars($_SESSION['user']['nom']) . '!</span>';
+        echo '<a href="deconnexion" class="nav-button">Se déconnecter</a>';
+    }
+    ?>
+</div>

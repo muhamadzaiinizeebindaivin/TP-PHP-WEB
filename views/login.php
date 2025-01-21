@@ -1,6 +1,10 @@
 <?php
 use Forms\LoginForm;
 
+// Start the session if not started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // Database configuration
 define('DB_PATH', __DIR__ . '/../data/database.sqlite');
 
@@ -40,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'prenom' => $user['prenom'],
                     'nom' => $user['nom']
                 ];
-
+            
                 // Set a success message and redirect to the /questions page
                 $_SESSION['message'] = "Connexion réussie !";
                 header("Location: /questions"); // Redirect to the questions page
