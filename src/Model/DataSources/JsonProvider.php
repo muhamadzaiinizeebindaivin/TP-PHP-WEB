@@ -1,4 +1,5 @@
 <?php
+
 namespace Model\DataSources;
 // Charger les questions depuis le fichier JSON
 use Model\Quiz\Checkbox;
@@ -29,7 +30,7 @@ class JsonProvider
         $choices = [];
         if (isset($question['choices'])) {
             foreach ($question['choices'] as $choice) {
-                $choices[] = $choice['text']; // Or $choice['value'], depending on what you need
+                $choices[] = $choice['value']; // Or $choice['value'], depending on what you need
             }
         }
         switch ($type) {

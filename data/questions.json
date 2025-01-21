@@ -13,7 +13,7 @@
         "choices": [
             {
                 "text": "Bleu",
-                "value": "blQuestioneu"
+                "value": "bleu"
             },
             {
                 "text": "Blanc",
