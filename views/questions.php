@@ -1,5 +1,4 @@
 <?php
-// Include the necessary classes
 use Model\Quiz\Quiz;
 use Model\DataSources\JsonProvider;
 
@@ -7,8 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-// Load the questions from the provider
 $jsonProvider = new JsonProvider();
 $questions = $jsonProvider->getListeQuestions();
 
