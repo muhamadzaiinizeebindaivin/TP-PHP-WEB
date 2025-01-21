@@ -1,0 +1,56 @@
+/* Global Styles */
+body.answer-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Center the title at the top */
+h1.answer-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #34495e;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 2px solid #e3e3e3;
+    width: 100%; /* Make it span the full width */
+    background-color: #ffffff;
+}
+
+/* Main container to center and stack items */
+div.answer-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add spacing between stacked items */
+}
+
+/* Style for form elements or quiz content */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Add padding to the quiz content */
+.quiz-content {
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+#score, #appre {
+    text-align: center;
+    font-size: 1rem;
+    color: darkcyan;
+}
