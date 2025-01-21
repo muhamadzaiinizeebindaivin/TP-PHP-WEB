@@ -19,3 +19,5 @@ $controller = new QuizController();
 $result = $controller->handleRequest();
 
 echo $result;
+
+
