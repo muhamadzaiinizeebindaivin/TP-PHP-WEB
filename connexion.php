@@ -70,5 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         <button type="submit">Se connecter</button>
     </form>
+    <a href="inscription.php">S'inscrire</a>
+    <a href="/">Retour au quiz</a>
 </body>
 </html>
